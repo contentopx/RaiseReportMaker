@@ -3,14 +3,10 @@
 A lightweight toolkit for mapping PDFs to **RAISE tags** using keyword and course content metadata.
 
 ---
-
 ## 🗂 What's Inside
 
-| File | Purpose |
-|------|---------|
-| `course_contentsmap.csv` | A master spreadsheet mapping each course, unit, and lesson to corresponding **RAISE tags** and optional **keywords**. |
-| `map_keywordstoraise.sh` | A shell script that parses PDFs using a keyword list and auto-maps them to appropriate **RAISE tags** using `course_contentsmap.csv`. OUTPUT: Keywords,section,activity_name,lesson_page,url
-|
-| `map_pdftoraise.sh` | A higher-level script that lists the **URL and location** of all matched PDFs for documentation or integration using `course_contentsmap.csv`. |
-
----
+| File | Purpose | Output Columns |
+|------|---------|----------------|
+| `course_contentsmap.csv` | Master mapping of all K–12 lesson content to RAISE metadata. | `content_id`, `section`, `activity_name`, `lesson_page`, `url`, `visible` |
+| `map_keywordstoraise.sh` | Scans `.html` lesson files for instructional keywords like “write an equation” or “constraint” and maps them to RAISE metadata using `course_contentsmap.csv`. | `Keywords`, `section`, `activity_name`, `lesson_page`, `url` |
+| `map_pdftoraise.sh` | Extracts PDF URLs from `k12_url_resource.csv`, finds where they appear in lesson HTML files, and maps them to course metadata using `course_contentsmap.csv`. | `URL`, `visible`, `Name`, `section`, `activity_name`, `lesson_page`, `url` |
